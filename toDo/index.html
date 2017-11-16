@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box}
+        body{font-size:14px;line-height:1.42857143; font-family:  Helvetica, Arial, sans-serif;}
+        .row:before,.row:after,.clearfix:before,.clearfix:after{content:'';display:table}
+        .row:after,.clearfix:after{clear:both}
+        .row,.clearfix{zoom:1}
+        .input-wrap {margin: 30px 0 20px 0;}
+        .main-wrap {width: 100%; max-width: 992px; margin: auto; }
+        input, button { padding: 3px 10px; }
+        table {width: 100%; border-collapse: collapse;}
+        tr {border: 1px solid #8e8e8e;}
+        td { padding: 5px; }
+        .reverse {margin-top: 20px; float: right;}
+        tr td:nth-child(3), tr td:nth-child(4) {text-align: center;}
+        td input {width: calc(100% - 53px); min-width: 100px;}
+       
+    </style>
+</head>
+<body>
+    <div class="main-wrap">
+        <div class="input-wrap">
+            <input type="text" name="toDo">
+            <button type="button" class="save">add task</button>
+            <div class="row">
+                <button type="button" class="reverse">reverce</button>
+            </div>
+        </div>
+        <div class="list">
+            <table>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+    <script src="todo.js"></script>
+</body>
+</html>
