@@ -7,7 +7,7 @@ let list = JSON.parse(localStorage.getItem('list')) || [],
 saveBtn.addEventListener('click', save, false);
 reverseBtn.addEventListener('click', reverse, false);
 
-function addRow(text, date, id) {
+function addRow(text, date, id, done) {
     let tr = document.createElement('tr'),
         options = {
             year: 'numeric',
@@ -18,6 +18,8 @@ function addRow(text, date, id) {
             minute: 'numeric',
             second: 'numeric'
         };
+
+    if (done) tr.classList += 'done';
     for (let i = 0; i < 4; i++) {
         let td = document.createElement('td');
         switch (i) {
@@ -28,11 +30,18 @@ function addRow(text, date, id) {
                 td.innerHTML = new Date(date).toLocaleString("ru", options);
                 break;
             case 2:
-                let editBtn = document.createElement('button');
+                let editBtn = document.createElement('button'),
+                    doneBtn = document.createElement('button');
+
                 editBtn.innerHTML = 'edit';
                 editBtn.setAttribute('date-id', id);
                 editBtn.addEventListener('click', editTask, false);
                 td.appendChild(editBtn);
+
+                doneBtn.innerHTML = 'done';
+                doneBtn.setAttribute('date-id', id);
+                doneBtn.addEventListener('click', doneTask, false);
+                td.appendChild(doneBtn);
                 break;
             case 3:
                 let deleteBtn = document.createElement('button');
@@ -52,7 +61,7 @@ function addRow(text, date, id) {
 function addRows() {
     for (let j in list) {
         if (list[j]) {
-            addRow(list[j].text, list[j].date, j);
+            addRow(list[j].text, list[j].date, j, list[j].done);
         }
     }
 
@@ -63,12 +72,13 @@ function save() {
     if (input.value) {
         let toDo = {
             text: input.value,
-            date: new Date
+            date: new Date,
+            done: false
         };
         list.push(toDo);
         localStorage.setItem('list', JSON.stringify(list));
 
-        addRow(toDo.text, toDo.date, list.length - 1);
+        addRow(toDo.text, toDo.date, list.length - 1, list.done);
         input.value = '';
     } else {
         alert('Write a task please.');
@@ -132,9 +142,71 @@ function editTask(e) {
     return true;
 }
 
+function doneTask(e) {
+    let id = e.target.getAttribute('date-id'),
+        tr = e.target.parentElement.parentElement;
+    list[id].done = !list[id].done;
+    localStorage.setItem('list', JSON.stringify(list));
+    tr.classList.toggle("done");
+
+    return list;
+}
+
+function dragAndDrop() {
+    let dragId = null;
+
+    function handleDragStart(e) {
+        this.classList.add('drag');
+        dragId = this.lastChild.lastChild.getAttribute('date-id');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/html', this.innerHTML);
+    }
+
+    function handleDragOver(e) {
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
+        e.dataTransfer.dropEffect = 'move';
+
+        return false;
+    }
+
+    function handleDrop(e) {
+        let dropId = this.lastChild.lastChild.getAttribute('date-id');
+        if (e.stopPropagation) {
+            e.stopPropagation();
+        }
+
+        if (dragId !== dropId) {
+            let tmp = list[dropId];
+            list[dropId] = list[dragId];
+            list[dragId] = tmp;
+            localStorage.setItem('list', JSON.stringify(list));
+            while (tbody.firstChild) {
+                tbody.removeChild(tbody.firstChild);
+            }
+            addRows();
+            dragAndDrop();
+        }
+
+        return false;
+    }
+
+    let trs = document.querySelectorAll('table tr');
+
+    [].forEach.call(trs, function(tr) {
+        tr.addEventListener('dragstart', handleDragStart, false);
+        tr.addEventListener('dragenter', function() {this.classList.add('over');}, false);
+        tr.addEventListener('dragover', handleDragOver, false);
+        tr.addEventListener('dragleave', function() {this.classList.remove('over');}, false);
+        tr.addEventListener('drop', handleDrop, false);
+    });
+}
+
 if (list.length) {
     try {
         addRows();
+        dragAndDrop();
     }
     catch (error) {
         console.log(error);

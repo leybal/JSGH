@@ -20,24 +20,30 @@
         .reverse {margin-top: 20px; float: right;}
         tr td:nth-child(3), tr td:nth-child(4) {text-align: center;}
         td input {width: calc(100% - 53px); min-width: 100px;}
-       
+        .done {opacity: 0.5; background-color: #ececec;}
+        .over {
+            -webkit-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+            -moz-box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+            box-shadow: inset 0px 0px 5px 0px rgba(0,0,0,0.75);
+        }
+        .drag {opacity: 0.5;}
     </style>
 </head>
 <body>
-    <div class="main-wrap">
-        <div class="input-wrap">
-            <input type="text" name="toDo">
-            <button type="button" class="save">add task</button>
-            <div class="row">
-                <button type="button" class="reverse">reverce</button>
-            </div>
-        </div>
-        <div class="list">
-            <table>
-                <tbody></tbody>
-            </table>
+<div class="main-wrap">
+    <div class="input-wrap">
+        <input type="text" name="toDo">
+        <button type="button" class="save">add task</button>
+        <div class="row">
+            <button type="button" class="reverse">reverce</button>
         </div>
     </div>
-    <script src="todo.js"></script>
+    <div class="list">
+        <table>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+<script src="todo.js"></script>
 </body>
 </html>
