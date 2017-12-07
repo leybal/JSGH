@@ -1,0 +1,50 @@
+#board {
+    display: block;
+    float: left;
+    margin: 25px 0 0 25px;
+    padding: 2px;
+    border: 5px solid #a2bcf5;
+    width: 276px;
+    height: 276px;
+    position: relative;
+}
+
+#buttons {
+    float: left;
+    margin: 25px 0 0 25px;
+    padding: 2px;
+}
+
+.block {
+    display: block;
+    position: absolute;
+    width: 62px;
+    height: 57px;
+    border: 2px solid #2566b7;
+    margin: 2px;
+    font-weight: bold;
+    font-size: 48px;
+    text-align: center;
+    color: #114da8;
+    padding-top: 5px;
+}
+
+.x1y1 { left: 0px; top: 0px;}
+.x2y1 { left: 70px; top: 0px;}
+.x3y1 { left: 140px; top: 0px;}
+.x4y1 { left: 210px; top: 0px;}
+
+.x1y2 { left: 0px; top: 70px;}
+.x2y2 { left: 70px; top: 70px;}
+.x3y2 { left: 140px; top: 70px;}
+.x4y2 { left: 210px; top: 70px;}
+
+.x1y3 { left: 0px; top: 140px;}
+.x2y3 { left: 70px; top: 140px;}
+.x3y3 { left: 140px; top: 140px;}
+.x4y3 { left: 210px; top: 140px;}
+
+.x1y4 { left: 0px; top: 210px;}
+.x2y4 { left: 70px; top: 210px;}
+.x3y4 { left: 140px; top: 210px;}
+.x4y4 { left: 210px; top: 210px;}
