@@ -116,7 +116,7 @@ $(function($) {
     }
 
 
-    function init() {
+    function main() {
         create();
         mix(1000);
 
@@ -136,5 +136,5 @@ $(function($) {
         });
     }
 
-    init();
-});
+    main();
+}); 
