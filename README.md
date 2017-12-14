@@ -4,3 +4,4 @@
 * DOM & local storage
 * Drag-and-drop
 * jQuery
+* XMLHttpRequest

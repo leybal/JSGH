@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #map-canvas {
+            width: 100%;
+            height: 400px;
+        }
+        .map-form {
+            margin: 20px 0;
+        }
+        .map-results {
+            margin-bottom: 20px;
+        }
+        .quote {
+            margin: 30px 0;
+        }
+        #quote-btn {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbHyb7f-DdYyePWJpCS2CVfcVmcMlcG-M"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="map-form">
+        <input type="text" id="map-address" name="address" value="Черкассы Украина">
+        <input type="button" id="map-search" value="search">
+    </div>
+    <div class="map-results"></div>
+    <div id="map-canvas"></div>
+    <div class="quote">
+        <p>Famous quotes</p>
+        <input type="button" value="get quote" id="quote-btn">
+        <div class="quote-text"></div>
+    </div>
+    <div class="email-wrap">
+        <p>E-mail validation</p>
+        <input type="text" value="text@ex.com" id="email">
+        <input type="button" value="is this one valid?" id="email-btn">
+        <div class="email-text"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
