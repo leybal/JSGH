@@ -7,14 +7,30 @@
     <script src="http://code.jquery.com/jquery-1.7.min.js"></script>
 </head>
 <body>
-    <div id="board"></div>
-    <div id="buttons">
+    <div>
+        <laybal for="name">Your name</laybal>
+        <input type="text" id="name"/>
+        <br/>
+        <br/>
+        <laybal for="size">Size</laybal>
+        <select name="size" id="size">
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+        <br/>
         <laybal for="win">Easy mode</laybal>
         <input type="checkbox" name="win" id="win">
-        <br>
-        <br>
         <input type="button" id="new" value="New game" />
     </div>
+    <div id="board" class="hidden"></div>
+    <div id="winners">
+        <h4>Winners</h4>
+    </div>
+
     <script src="game.js"></script>
 </body>
 </html>
