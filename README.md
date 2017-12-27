@@ -5,3 +5,4 @@
 * Drag-and-drop
 * jQuery
 * XMLHttpRequest
+* MVC
